@@ -1,3 +1,2 @@
 # Projeto I
- Repositório do Projeto I 
  O Projeto consiste num sensor de estacionamento com display (SED) que irá medir a distância a um objeto apontado, recorrendo a três sensores ultrassónicos, sendo que a partir de uma certa distância de aproximação, um aviso a partir de LEDs e buzzer será emitido, com o objetivo de avisar que o objeto está próximo dos sensores. Além disso, o projeto também irá contar com um display que mostrará a distância medida pelos sensores em centímetros juntamente com um gráfico dinâmico. Por fim, a informação apresentada no display será enviada para uma app no telemóvel recorrendo ao bluetooth do módulo HC-05. 
