@@ -56,7 +56,7 @@ void loop() {
   int delayTime3 = map(distance3,0,30,50,500);
   int delayTime = delayTime1 + delayTime2 + delayTime3;
 
-  if((distance1 < 30 && distance1 != 0) || (distance2 < 30 && distance2 != 0) || (distance3 < 30 && distance3 != 0)){
+  if((distance1 < 33 && distance1 != 0) || (distance2 < 33 && distance2 != 0) || (distance3 < 33 && distance3 != 0)){
     digitalWrite(Led_Red, HIGH);
     digitalWrite(Led_Green, LOW);
     digitalWrite(Led_Blue, LOW);
@@ -71,6 +71,10 @@ void loop() {
     delay(100);
 
   } }
+    if((distance1 >= 33 && distance1 < 66 && distance1 != 0) || (distance2 >= 33 && distance2 < 66 && distance2 != 0) || (distance3 >= 33 && distance3 < 66 && distance3 != 0)){
+      digitalWrite(Led_Red, HIGH);
+      digitalWrite(Led_Green, HIGH);
+    }
 
   else{
     digitalWrite(Led_Red, LOW);
