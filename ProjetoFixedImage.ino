@@ -17,15 +17,6 @@ PImage logo;
 void setup() {
 
   TFTscreen.begin();
-  TFTscreen.background(255, 255, 255);
-
-  TFTscreen.stroke(0, 0, 255);
-  TFTscreen.println();
-  TFTscreen.println(F("Arduino TFT Bitmap Example"));
-  TFTscreen.stroke(0, 0, 0);
-  TFTscreen.println(F("Open serial monitor"));
-  TFTscreen.println(F("to run the sketch"));
-
 
   Serial.begin(9600);
   while (!Serial) {
@@ -50,9 +41,9 @@ void setup() {
 
   // now that the SD card can be access, try to load the
   // image file.
-  logo = TFTscreen.loadImage("Display4.bmp");
+  logo = TFTscreen.loadImage("DisplayClear.bmp");
   if (!logo.isValid()) {
-    Serial.println(F("error while loading Display1.bmp"));
+    Serial.println(F("error while loading DisplayClear.bmp"));
   }
 }
 
