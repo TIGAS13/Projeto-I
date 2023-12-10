@@ -4,7 +4,7 @@
 #define Sensor3_PIN_TRIG 5
 #define Sensor4_PIN_ECHO 4
 #define Sensor5_PIN_TRIG 7
-#define Sensor6_PIN_ECHO 6
+#define Sensor6_PIN_ECHO 13
 #define Led_Red 8
 #define Led_Green 9
 #define Led_Blue 6
