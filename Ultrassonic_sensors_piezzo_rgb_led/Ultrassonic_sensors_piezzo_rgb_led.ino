@@ -1,3 +1,4 @@
+#include <SoftwareSerial.h>
 #define Sensor1_PIN_TRIG 3
 #define Sensor2_PIN_ECHO 2
 #define Sensor3_PIN_TRIG 5
@@ -6,11 +7,14 @@
 #define Sensor6_PIN_ECHO 6
 #define Led_Red 8
 #define Led_Green 9
-#define Led_Blue 10
-#define Buzzer_pin 11
+#define Led_Blue 6
+#define Buzzer_pin 12
+
+SoftwareSerial B(10,11);
 
 void setup() {
   Serial.begin(115200);
+  B.begin(115200);
   pinMode(Sensor1_PIN_TRIG, OUTPUT);
   pinMode(Sensor2_PIN_ECHO, INPUT);
   pinMode(Sensor3_PIN_TRIG, OUTPUT);
@@ -51,10 +55,18 @@ void loop() {
   Serial.print("Distância 3 em CM: ");
   unsigned int distance3 = duration3 / 58;
   Serial.println(distance3);
-  int delayTime1 = map(distance1,0,30,50,500);
-  int delayTime2 = map(distance2,0,30,50,500);
-  int delayTime3 = map(distance3,0,30,50,500);
+  int delayTime1 = map(distance1,0,100,50,500);
+  int delayTime2 = map(distance2,0,100,50,500);
+  int delayTime3 = map(distance3,0,100,50,500);
   int delayTime = delayTime1 + delayTime2 + delayTime3;
+
+  B.print(distance1);
+  B.print(";");
+  B.print(distance2);
+  B.print(";");
+  B.print(distance3);
+  B.print(";");
+  delay(100);
 
   if((distance1 < 33 && distance1 != 0) || (distance2 < 33 && distance2 != 0) || (distance3 < 33 && distance3 != 0)){
     digitalWrite(Led_Red, HIGH);
@@ -67,22 +79,22 @@ void loop() {
   }
   if(distance1 == 0 || distance2 == 0 || distance3 == 0){
      while (true) {
-    tone(buzzerPin, 1000);
+    tone(Buzzer_pin, 1000);
     delay(100);
 
   } }
-    if((distance1 >= 33 && distance1 < 66 && distance1 != 0) || (distance2 >= 33 && distance2 < 66 && distance2 != 0) || (distance3 >= 33 && distance3 < 66 && distance3 != 0)){
+    if((distance1 >= 33 && distance1 < 66)  || (distance2 >= 33 && distance2 < 66) || (distance3 >= 33 && distance3 < 66)){
       digitalWrite(Led_Red, HIGH);
       digitalWrite(Led_Green, HIGH);
     }
 
-  else{
+  if(distance1 >= 66 || distance2 >= 66 || distance3 >= 66){
     digitalWrite(Led_Red, LOW);
     digitalWrite(Led_Green, HIGH);
     digitalWrite(Led_Blue, LOW);
   }
   
-  
+    
   
   
   
@@ -94,6 +106,6 @@ void loop() {
 
 
 
-  delay(1000);
+  delay(300);
 }
 
