@@ -61,9 +61,9 @@ void loop() {
   int delayTime = delayTime1 + delayTime2 + delayTime3;
 
   B.print(distance1);
-  B.print(";");
+  B.print(",");
   B.print(distance2);
-  B.print(";");
+  B.print(",");
   B.print(distance3);
   B.print(";");
   delay(100);
